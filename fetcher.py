@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 BASE_URL = "https://news.ycombinator.com" 
 visited = set() # Store Visited links
@@ -9,7 +10,6 @@ UNWANTED_PATTERNS = ["vote?id=", "hide?id=", "login?", "user?id=", "submit", "p=
 
 # Step 1: Fetch and parse the page
 start_time = time.time()  # Start timer
-
 response = requests.get(BASE_URL, timeout=5)
 soup = BeautifulSoup(response.text, "html.parser")
 
@@ -22,33 +22,35 @@ for a_tag in soup.find_all("a", href=True):
 
 print("Total Unique Links: ", len(links))
 
-# Step 3: Loop through links
-for i, next_url in enumerate(links):
-    if next_url in visited:  # Avoid re-crawling visited URLs
-        print(f"Skipping already visited: {next_url}")
-        continue
+# Function to fetch page details
+def fetch_page(url):
+    if url in visited:
+        return f"Skipping already visited: {url}"
 
-    print(f"\n[{i+1}/{len(links)}] Navigating to: {next_url}")
-    visited.add(next_url) # Mark as visited
-
+    visited.add(url)
     try:
-        response = requests.get(next_url, timeout=5)
-        if response.status_code !=200:
-            print(f"Skipping {next_url} (Status Code: {response.status_code})")
-            continue
-        
+        response = requests.get(url, timeout=5)
+        if response.status_code != 200:
+            return f"Skipping {url} (Status Code: {response.status_code})"
+
         soup = BeautifulSoup(response.text, "html.parser")
-
-        # Check if the title exists before trying to access it
         page_title = soup.title.string if soup.title else "No Title Found"
-        print("Page Title:", page_title)
-
-        time.sleep(1)
+        return f"Page Title: {page_title} | URL: {url}"
 
     except requests.exceptions.RequestException as e:
-        print(f"Failed to fetch {next_url}: {e}")
+        return f"Failed to fetch {url}: {e}"
 
-# Capture end time **AFTER the loop completes**
+
+# Step 3: Use multi-threading to fetch pages in parallel
+MAX_THREADS = 10  # Adjust this number based on network speed and CPU capacity
+
+with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+    future_to_url = {executor.submit(fetch_page, url): url for url in links}
+
+    for future in as_completed(future_to_url):
+        print(future.result())  # Print results as they complete
+
+# Capture end time
 end_time = time.time()
 elapsed_time = end_time - start_time
 
