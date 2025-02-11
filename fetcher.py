@@ -8,6 +8,8 @@ visited = set() # Store Visited links
 UNWANTED_PATTERNS = ["vote?id=", "hide?id=", "login?", "user?id=", "submit", "p=", "from?site="]
 
 # Step 1: Fetch and parse the page
+start_time = time.time()  # Start timer
+
 response = requests.get(BASE_URL, timeout=5)
 soup = BeautifulSoup(response.text, "html.parser")
 
@@ -45,3 +47,10 @@ for i, next_url in enumerate(links):
 
     except requests.exceptions.RequestException as e:
         print(f"Failed to fetch {next_url}: {e}")
+
+# Capture end time **AFTER the loop completes**
+end_time = time.time()
+elapsed_time = end_time - start_time
+
+# Print total execution time
+print(f"\nTotal Execution Time: {elapsed_time:.2f} seconds")
