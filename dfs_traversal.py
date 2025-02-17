@@ -27,6 +27,15 @@ def dfs(graph, start_url):
                 if neighbor not in visited:
                     stack.append(neighbor)
 
+    # ✅ Save traversal results to a CSV file
+    with open("dfs_traversal.csv", "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Visited URLs"])
+        for url in traversal_path:
+            writer.writerow([url])
+
+    print("\n📁 DFS results saved to dfs_traversal.csv!")
+
 # Start DFS from a specific page (e.g., Hacker News)
 if __name__ == "__main__":
     start_url = "https://news.ycombinator.com"
