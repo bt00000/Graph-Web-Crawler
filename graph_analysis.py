@@ -51,3 +51,25 @@ top_pages = sorted(pagerank.items(), key=lambda x: x[1], reverse=True)[:10]
 print("\n Top 10 Most Important Pages (PageRank):")
 for rank, (page, score) in enumerate(top_pages, start=1):
     print(f"{rank}. {page} -> Score: {score:.5f}")
+
+# **Step 3: Identify Connected Components**
+strong_components = list(nx.strongly_connected_components(G))
+weak_components = list(nx.weakly_connected_components(G))
+
+print(f"\n Total Strongly Connected Components: {len(strong_components)}")
+print(f" Total Weakly Connected Components: {len(weak_components)}")
+
+# Sort components by size
+largest_weak_component = max(weak_components, key=len)
+
+print(f"\n Largest Weakly Connected Component has {len(largest_weak_component)} pages.")
+
+# Visualize component sizes
+component_sizes = [len(comp) for comp in weak_components]
+
+plt.figure(figsize=(10, 5))
+plt.hist(component_sizes, bins=20, color='red', alpha=0.7)
+plt.xlabel("Size of Weakly Connected Components")
+plt.ylabel("Frequency")
+plt.title("Distribution of Connected Component Sizes")
+plt.show()
