@@ -88,3 +88,42 @@ print("\n🌎 Top 10 Most Influential Domains (Aggregated PageRank):")
 for rank, (domain, score) in enumerate(top_domains, start=1):
     print(f"{rank}. {domain} -> Score: {score:.5f}")
 
+# ** Step 5: Visualizations**
+
+# **1. In-Degree Distribution**
+plt.figure(figsize=(10, 5))
+plt.hist(in_degrees, bins=50, color='blue', alpha=0.7)
+plt.xlabel("In-Degree (Number of Incoming Links)")
+plt.ylabel("Frequency")
+plt.title("In-Degree Distribution of Web Pages")
+plt.yscale("log")  # Log scale for better visibility
+plt.show()
+
+# **2. Out-Degree Distribution**
+plt.figure(figsize=(10, 5))
+plt.hist(out_degrees, bins=50, color='green', alpha=0.7)
+plt.xlabel("Out-Degree (Number of Outgoing Links)")
+plt.ylabel("Frequency")
+plt.title("Out-Degree Distribution of Web Pages")
+plt.yscale("log")  # Log scale for better visibility
+plt.show()
+
+# **3. PageRank Score Distribution**
+pagerank_scores = list(pagerank.values())
+plt.figure(figsize=(10, 5))
+plt.hist(pagerank_scores, bins=50, color='purple', alpha=0.7)
+plt.xlabel("PageRank Score")
+plt.ylabel("Frequency")
+plt.title("Distribution of PageRank Scores")
+plt.yscale("log")  # Log scale for better visibility
+plt.show()
+
+# **4. Connected Component Size Distribution**
+component_sizes = [len(comp) for comp in weak_components]
+plt.figure(figsize=(10, 5))
+plt.hist(component_sizes, bins=20, color='red', alpha=0.7)
+plt.xlabel("Size of Weakly Connected Components")
+plt.ylabel("Frequency")
+plt.title("Distribution of Connected Component Sizes")
+plt.yscale("log")
+plt.show()
