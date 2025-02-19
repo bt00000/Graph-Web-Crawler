@@ -127,3 +127,7 @@ plt.ylabel("Frequency")
 plt.title("Distribution of Connected Component Sizes")
 plt.yscale("log")
 plt.show()
+
+# **Step 6: Export to Gephi (GEXF Format)**
+nx.write_gexf(G, "graph_data.gexf")
+print("\n📁 Graph saved as 'graph_data.gexf'. Open it in Gephi for analysis.")
