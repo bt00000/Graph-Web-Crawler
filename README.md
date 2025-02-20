@@ -8,7 +8,7 @@ This project **crawls web pages**, builds a **directed graph** of linked pages, 
 ## 📂 Project Structure
 
 ```
-📁 graph-web-crawler
+📁 Graph-Web-Crawler
 │── 📝 README.md                 # Project Documentation
 │── 📄 fetcher.py                 # Web Crawler to collect links
 │── 📄 bfs.py                      # BFS Traversal
@@ -25,7 +25,7 @@ This project **crawls web pages**, builds a **directed graph** of linked pages, 
 ### 1️⃣ Clone the Repository
 
 ```sh
-git clone https://github.com/bt00000/graph-web-crawler.git
+git clone https://github.com/bt00000/Graph-Web-Crawler.git
 cd graph-web-crawler
 ```
 
