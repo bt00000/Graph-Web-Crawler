@@ -1,9 +1,9 @@
+![image](https://github.com/user-attachments/assets/f0828f2d-8c53-4286-b05a-ca45d69059bb)
 # 🌐 Web Graph Analysis & Visualization
 
 This project **crawls web pages**, builds a **directed graph** of linked pages, and analyzes their connectivity using **graph algorithms** like **BFS, DFS, PageRank, and Connected Components**. It also visualizes the graph in **Gephi** for deeper insights.
 
 ---
-![image](https://github.com/user-attachments/assets/f0828f2d-8c53-4286-b05a-ca45d69059bb)
 
 ## 📂 Project Structure
 
