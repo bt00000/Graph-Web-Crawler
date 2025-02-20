@@ -49,7 +49,7 @@ This generates `graph_data.json`, containing the web structure.
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### 🔹 Run BFS Traversal
 
