@@ -5,31 +5,31 @@ This project **crawls web pages**, builds a **directed graph** of linked pages, 
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
-Graph-Web-Crawler
-│── README.md                 # Project Documentation
-│── fetcher.py                 # Web Crawler to collect links
-│── bfs.py                      # BFS Traversal
-│── dfs.py                      # DFS Traversal
-│── graph_analysis.py           # Graph Analysis (PageRank, Components)
-│── graph_data.json             # Crawled Web Graph Data
-│── graph_visualization.gexf    # Graph File for Gephi
+📁 Graph-Web-Crawler
+│── 📝 README.md                 # Project Documentation
+│── 📄 fetcher.py                 # Web Crawler to collect links
+│── 📄 bfs.py                      # BFS Traversal
+│── 📄 dfs.py                      # DFS Traversal
+│── 📄 graph_analysis.py           # Graph Analysis (PageRank, Components)
+│── 📄 graph_data.json             # Crawled Web Graph Data
+│── 📄 graph_visualization.gexf    # Graph File for Gephi
 ```
 
 ---
 
-## ⚙Installation & Setup
+## ⚙️ Installation & Setup
 
-### Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```sh
 git clone https://github.com/bt00000/Graph-Web-Crawler.git
 cd graph-web-crawler
 ```
 
-### Install Dependencies
+### 2️⃣ Install Dependencies
 
 Make sure you have Python installed. Then install required packages:
 
@@ -37,7 +37,7 @@ Make sure you have Python installed. Then install required packages:
 pip install -r requirements.txt
 ```
 
-### Run the Web Crawler
+### 3️⃣ Run the Web Crawler
 
 To fetch and build the web graph:
 
@@ -49,9 +49,9 @@ This generates `graph_data.json`, containing the web structure.
 
 ---
 
-## Usage
+## 🚀 Usage
 
-### Run BFS Traversal
+### 🔹 Run BFS Traversal
 
 ```sh
 python bfs.py
@@ -59,7 +59,7 @@ python bfs.py
 
 - **Outputs**: `bfs_traversal.csv`
 
-### Run DFS Traversal
+### 🔹 Run DFS Traversal
 
 ```sh
 python dfs.py
@@ -67,7 +67,7 @@ python dfs.py
 
 - **Outputs**: `dfs_traversal.csv`
 
-### Analyze & Rank Web Pages
+### 🔹 Analyze & Rank Web Pages
 
 ```sh
 python graph_analysis.py
@@ -104,7 +104,7 @@ https://github.com/user-attachments/assets/36d2cab0-ef22-4297-8e4e-2bc834f49397
 
 ## Future Improvements
 
-Expand crawling depth  
-Integrate sentiment analysis of page content  
-Optimize PageRank with real-time updates  
-Add topic-based filtering  
+🔹 Expand crawling depth  
+🔹 Integrate sentiment analysis of page content  
+🔹 Optimize PageRank with real-time updates  
+🔹 Add topic-based filtering  
